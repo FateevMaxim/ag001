@@ -43,7 +43,7 @@
                     {{ __('Зарегистрироваться') }}
                 </x-secondary-button>
             </a>
-        </div
+        </div>
         @if(isset($config->whats_app))
             <div class="flex items-center justify-end mt-4">
                 <a href="https://api.whatsapp.com/send?phone={{$config->whats_app}}&text=Здравствуйте! Напомните, пожалуйста, мой пароль" class="w-9/12 mx-auto">
