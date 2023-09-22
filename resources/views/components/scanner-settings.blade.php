@@ -60,7 +60,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6 justify-content-center">
-                <div id="qrcode_inventory" class="qr_center"></div>
+                <img src="{{ asset('images/barcodeinventory.jpg') }}" width="200" class="mx-auto" alt="Barcode">
             </div>
 
         </div>
@@ -82,7 +82,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6 justify-content-center">
-                <div id="qrcode_clear" class="qr_center"></div>
+                <img src="{{ asset('images/barcodeclear.jpg') }}" width="200" class="mx-auto" alt="Barcode">
             </div>
 
         </div>
@@ -104,7 +104,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6 justify-content-center">
-                <div id="qrcode_realtime" class="qr_center"></div>
+                <img src="{{ asset('images/barcoderealtime.jpg') }}" width="200" class="mx-auto" alt="Barcode">
             </div>
 
         </div>
@@ -112,6 +112,7 @@
 </div>
 
 
+{{--
 <script src="{{ asset('js/qrcode.js') }}"></script>
 <script>
     var upload_data = document.getElementById("qrcode");
@@ -151,3 +152,4 @@
         correctLevel : QRCode.CorrectLevel.H
     });
 </script>
+--}}

@@ -28,7 +28,7 @@
 
                 <div class="flex flex-col w-full min_height mx-auto p-4 round_border relative">
                     <div class="grid mx-auto">
-                        <div id="qrcode"></div>
+                        <img src="{{ asset('images/barcode.jpg') }}" width="200" alt="Barcode">
                     </div>
                     <div class="grid mx-auto pt-4">
                         <b>Upload Data</b>
