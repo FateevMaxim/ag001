@@ -20,6 +20,7 @@ class DashboardController extends Controller
         $qr = QrCodes::query()->select()->where('id', 1)->first();
         $qrChina = QrCodes::query()->select()->where('id', 2)->first();
         $qrUralsk = QrCodes::query()->select()->where('id', 3)->first();
+        $qrUstkamenogorsk = QrCodes::query()->select()->where('id', 4)->first();
 
         if (Auth::user()->is_active === 1 && Auth::user()->type === null){
             $tracks = ClientTrackList::query()
@@ -49,6 +50,10 @@ class DashboardController extends Controller
             $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
             $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Уральске')->count();
             return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Уральске', 'qr' => $qrUralsk]);
+        }elseif (Auth::user()->type === 'ustkamenogorskin') {
+            $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
+            $count = TrackList::query()->whereDate('to_city', Carbon::today())->where('status', 'Получено на складе в Усть-Каменогорске')->count();
+            return view('almaty', ['count' => $count, 'config' => $config, 'cityin' => 'Усть-Каменогорске', 'qr' => $qrUstkamenogorsk]);
         }elseif (Auth::user()->is_active === 1 && Auth::user()->type === 'almatyout'){
             $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
             $count = TrackList::query()->whereDate('to_client', Carbon::today())->count();
@@ -59,6 +64,11 @@ class DashboardController extends Controller
             $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
             $cities = City::query()->select('title')->get();
             return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Уральске', 'qr' => $qrUralsk]);
+        } elseif (Auth::user()->type === 'ustkamenogorskout') {
+            $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
+            $count = TrackList::query()->whereDate('to_client_city', Carbon::today())->count();
+            $cities = City::query()->select('title')->get();
+            return view('almatyout', ['count' => $count, 'config' => $config, 'cities' => $cities, 'cityin' => 'Усть-Каменогорске', 'qr' => $qrUstkamenogorsk]);
         }elseif (Auth::user()->is_active === 1 && Auth::user()->type === 'othercity'){
             $config = Configuration::query()->select('address', 'title_text', 'address_two')->first();
             $count = TrackList::query()->whereDate('to_client', Carbon::today())->count();
